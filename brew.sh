@@ -9,11 +9,11 @@ brew install macvim
 brew install mobile-shell
 
 # cask stuff
-brew cask install adium
-brew cask install dropbox
-brew cask install github
-brew cask install google-chrome
-brew cask install iterm2
-brew cask install vlc
-brew cask install android-file-transfer
-brew cask install spotify
+brew install adium
+brew install dropbox
+brew install github
+brew install google-chrome
+brew install iterm2
+brew install vlc
+brew install android-file-transfer
+brew install spotify

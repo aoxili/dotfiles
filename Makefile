@@ -18,7 +18,7 @@ powerline: $(POWER)
 
 git:
 	ln -nfs $(DOTFILES)/git/gitconfig ~/.gitconfig
-	ln -nfs $(DOTFILES)/git/gitignore_global ~/.gitconfig_global
+	ln -nfs $(DOTFILES)/git/gitignore_global ~/.gitignore_global
 
 tmux:
 	ln -nfs $(DOTFILES)/tmux.conf ~/.tmux.conf
@@ -30,13 +30,10 @@ $(VUNDLE):
 
 vundle: $(VUNDLE)
 
-wakatime:
-	ln -nfs $(DOTFILES)/wakatime.cfg ~/.wakatime.cfg
-
 vimrc: vundle
 	ln -nfs $(DOTFILES)/vimrc ~/.vimrc
 
-vim: wakatime vimrc
+vim: vimrc
 
 OMZ := $(HOME)/.oh-my-zsh
 
