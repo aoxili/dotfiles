@@ -62,9 +62,6 @@ filetype plugin indent on    " required
 " END OF Vundle
 syntax enable
 set background=dark
-"colorscheme solarized
-colorscheme Monokai
-colorscheme molokai
 
 set autowrite                  " Writes on make/shell commands
 set autoread

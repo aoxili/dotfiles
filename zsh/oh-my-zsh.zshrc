@@ -45,7 +45,7 @@ ZSH_THEME="blinks"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode osx vundle pip brew)
+plugins=(git vi-mode vundle pip brew)
 
 # User configuration
 
@@ -129,3 +129,7 @@ if [[ -a /usr/bin/keychain ]]; then
 fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.dotfiles/zsh/zbell.zsh ] && source ~/.dotfiles/zsh/zbell.zsh
+alias vim='nvim'
+export EDITOR="nvim"
+export VISUAL="nvim"
+alias vi='nvim'

@@ -32,6 +32,8 @@ vundle: $(VUNDLE)
 
 vimrc: vundle
 	ln -nfs $(DOTFILES)/vimrc ~/.vimrc
+	mkdir -p ~/.config/nvim
+	ln -s $(DOTFILES)/vimrc ~/.config/nvim/init.vim
 
 vim: vimrc
 
