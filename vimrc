@@ -9,9 +9,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim' " Vundle dogfooding itself, required
 
-Plugin 'wakatime/vim-wakatime'  " productivity tracker
 Plugin 'tpope/vim-fugitive'     " powerful git tool
-Plugin 'kien/ctrlp.vim'         " textmate-like ctrl+p hotkey
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'msanders/snipmate.vim'
@@ -115,12 +115,6 @@ set listchars+=extends:»,precedes:«
 map <silent> <F12> :set invlist<CR>
 
 " "}}}
-
-"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py" "for ycm
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
 
 " old stuff from pnaimoli
 

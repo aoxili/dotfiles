@@ -45,7 +45,7 @@ ZSH_THEME="blinks"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode vundle pip brew)
+plugins=(vi-mode vundle pip brew)
 
 # User configuration
 
@@ -97,7 +97,6 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
 # gg used to be alias as git gui citool shortcut
-unalias gg
 function gg()
 {
   KEYWORDS=$@
