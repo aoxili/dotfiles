@@ -45,7 +45,7 @@ ZSH_THEME="blinks"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode vundle pip brew)
+plugins=(vi-mode vundle pip brew git colorize)
 
 # User configuration
 
@@ -86,8 +86,6 @@ then
 
   # Brew paths over system paths
   export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-
-  alias subl="/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2"
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -96,30 +94,35 @@ source $ZSH/oh-my-zsh.sh
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
-# gg used to be alias as git gui citool shortcut
-function gg()
-{
-  KEYWORDS=$@
-  COMMAND=""
-  FIRST=0
-  for i in $@
-  do
-    if [ $FIRST -eq 0 ]
-    then
-      COMMAND="grep -i \"$i\""
-      FIRST=1
-    else
-      COMMAND="$COMMAND | grep -i \"$i\""
-    fi
-  done
-  eval "$COMMAND"
-}
 
 LOCAL_RC=~/.zshrc.local
 [ -f $LOCAL_RC ] && source $LOCAL_RC
 
+# History configuration (matching bash infinite history)
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export HISTTIMEFORMAT='%F %T '
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
+# History aliases (matching bash)
+alias h='fc -li -25'
+
 # Commands prefixed with a space don't go into history
 setopt HIST_IGNORE_SPACE
+
+# Exclude common commands from history (matching bash HISTIGNORE)
+HISTORY_IGNORE="(ls|ll|sl|l|[bf]g|clear|cd|cd ..|cd ...|cd ....|h|history|exit|dirs|d|[1-9]|[1-9][0-9])"
+
+# Function to filter commands from history
+zshaddhistory() {
+    emulate -L zsh
+    [[ $1 != ${~HISTORY_IGNORE} ]]
+}
 
 # load keychain if keychain exists
 if [[ -a /usr/bin/keychain ]]; then
@@ -127,8 +130,15 @@ if [[ -a /usr/bin/keychain ]]; then
   source $HOME/.keychain/$HOST-sh
 fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Better FZF history search - prioritize exact phrase matches
+export FZF_CTRL_R_OPTS="--exact"
 [ -f ~/.dotfiles/zsh/zbell.zsh ] && source ~/.dotfiles/zsh/zbell.zsh
 alias vim='nvim'
 export EDITOR="nvim"
 export VISUAL="nvim"
 alias vi='nvim'
+
+# Use colorized versions as defaults
+alias cat='ccat'
+alias less='cless'

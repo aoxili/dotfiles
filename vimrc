@@ -42,7 +42,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter' " git diff
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/a.vim'
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 " All of your Plugins must be added before the following line
@@ -61,7 +60,7 @@ filetype plugin indent on    " required
 
 " END OF Vundle
 syntax enable
-set background=dark
+colorscheme molokai
 
 set autowrite                  " Writes on make/shell commands
 set autoread
