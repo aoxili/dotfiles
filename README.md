@@ -1,7 +1,7 @@
 Aoxi's dotfiles
 ========
 
-#install
+# install
 
 Run this:
 
