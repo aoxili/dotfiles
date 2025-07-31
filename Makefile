@@ -1,4 +1,4 @@
-all: powerline git tmux vim zsh fzf
+all: powerline git tmux vim zsh fzf tpm
 
 DOTFILES := $(shell pwd)
 
@@ -20,8 +20,17 @@ git:
 	ln -nfs $(DOTFILES)/git/gitconfig ~/.gitconfig
 	ln -nfs $(DOTFILES)/git/gitignore_global ~/.gitignore_global
 
-tmux:
+TPM := $(HOME)/.tmux/plugins/tpm
+
+$(TPM):
+	git clone https://github.com/tmux-plugins/tpm $@
+
+tpm: $(TPM)
+
+tmux: tpm
 	ln -nfs $(DOTFILES)/tmux.conf ~/.tmux.conf
+	mkdir -p ~/.config
+	ln -nfs $(DOTFILES)/tmux-powerline ~/.config/
 
 VUNDLE := $(HOME)/.vim/bundle/Vundle.vim
 
